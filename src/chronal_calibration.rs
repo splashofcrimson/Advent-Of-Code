@@ -23,6 +23,8 @@ pub fn two() {
     let mut running_sum = 0;
     let mut flag = 0;
 
+    frequencies.insert(running_sum);
+
     loop {
         for frequency in &int_lines {
             running_sum += frequency;
