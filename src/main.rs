@@ -1,9 +1,9 @@
-// mod chronal_calibration;
-mod inventory_management;
+mod day01;
+mod day02;
 
 fn main() {
-    // chronal_calibration::one();
-    // chronal_calibration::two();
-    inventory_management::three();
-    inventory_management::four();
+    day01::one();
+    day01::two();
+    day02::three();
+    day02::four();
 }

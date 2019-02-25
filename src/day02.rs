@@ -50,7 +50,7 @@ pub fn three() {
     }
 
     let checksum : i32 = two_count * three_count;
-    println!("checksum: {}", checksum);
+    println!("2.1: {}", checksum);
 }
 
 fn diff(id1 : String, id2 : String) -> Option<String> {
@@ -76,7 +76,7 @@ pub fn four() {
         for id2 in &box_ids {
             match diff(id1.to_string(), id2.to_string()) {
                 Some(similar) => {
-                    println!("letters in common: {}", similar);
+                    println!("2.2: {}", similar);
                     flag = 1;
                     break;
                 },

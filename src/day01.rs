@@ -14,7 +14,7 @@ fn read_from_file() -> Vec<i32> {
 
 pub fn one() {
     let sum : i32 = read_from_file().iter().fold(0, |sum, val| sum + val);
-    println!("Resulting frequency: {}", sum);
+    println!("1.1: {}", sum);
 }
 
 pub fn two() {
@@ -32,7 +32,7 @@ pub fn two() {
                 frequencies.insert(running_sum);
             }
             else {
-                println!("Repeated frequency: {}", running_sum);
+                println!("1.2: {}", running_sum);
                 flag = 1;
                 break;
             }
