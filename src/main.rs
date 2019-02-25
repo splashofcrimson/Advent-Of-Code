@@ -1,3 +1,5 @@
+mod chronal_calibration;
+
 fn main() {
-    println!("Hello, world!");
+    chronal_calibration::run();
 }
