@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
 
-pub fn run() {
+pub fn one() {
     let buf = BufReader::new(File::open("input/day01.txt").unwrap());
     let lines: Vec<String> = buf.lines()
         .map(|l| l.unwrap())
