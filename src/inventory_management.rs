@@ -52,3 +52,42 @@ pub fn three() {
     let checksum : i32 = two_count * three_count;
     println!("checksum: {}", checksum);
 }
+
+fn diff(id1 : String, id2 : String) -> Option<String> {
+    let mut diff_count : i32 = 0;
+    let mut similar = String::from("");
+
+    for (i, c) in id1.chars().enumerate() {
+        if id1.as_bytes()[i] != id2.as_bytes()[i] {
+            diff_count += 1;
+        }
+        else {
+            similar.push(c);
+        }
+    }
+    if diff_count == 1 { Some(similar) } else { None }
+}
+
+pub fn four() {
+    let box_ids = read_from_file();
+    let mut flag = 0;
+
+    for id1 in &box_ids {
+        for id2 in &box_ids {
+            match diff(id1.to_string(), id2.to_string()) {
+                Some(similar) => {
+                    println!("letters in common: {}", similar);
+                    flag = 1;
+                    break;
+                },
+                _ => {
+                    continue;
+                }
+            }
+        }
+        if flag == 1 {
+            break;
+        }
+    }
+
+}

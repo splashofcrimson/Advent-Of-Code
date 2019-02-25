@@ -5,4 +5,5 @@ fn main() {
     // chronal_calibration::one();
     // chronal_calibration::two();
     inventory_management::three();
+    inventory_management::four();
 }
