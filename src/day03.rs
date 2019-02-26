@@ -3,7 +3,7 @@ use std::io::{prelude::*, BufReader};
 use std::collections::{HashSet, HashMap};
 
 struct Claim {
-    id: String,
+    id: i32,
     x: i32,
     y: i32,
     width: i32,
@@ -39,7 +39,7 @@ pub fn five() {
             .collect();
 
         let c = Claim {
-            id: split_claim[0 as usize].clone(),
+            id: split_claim[0 as usize].clone().trim_matches('#').parse().unwrap(),
             x: coordinates[0 as usize].clone().parse().unwrap(),
             y: coordinates[1 as usize].clone().trim_matches(':').parse().unwrap(),
             width: bounds[0 as usize].clone().parse().unwrap(),
@@ -76,7 +76,9 @@ pub fn six() {
     let mut bounds: Vec<String>;
 
     let mut claims = HashMap::new();
-    let mut claim_ids = HashSet
+    let mut claim_ids = HashSet::new();
+
+    let mut flag_id = 0;
 
     let buf = read_from_file();
     for claim in &buf {
@@ -91,7 +93,7 @@ pub fn six() {
             .collect();
 
         let c = Claim {
-            id: split_claim[0 as usize].clone(),
+            id: split_claim[0 as usize].clone().trim_matches('#').parse().unwrap(),
             x: coordinates[0 as usize].clone().parse().unwrap(),
             y: coordinates[1 as usize].clone().trim_matches(':').parse().unwrap(),
             width: bounds[0 as usize].clone().parse().unwrap(),
@@ -102,14 +104,15 @@ pub fn six() {
             for y in (c.y+1)..=(c.y+c.height) {
                 let coordinate = (x, y);
                 if !claims.contains_key(&coordinate) {
-                    claims.insert(coordinate, );
+                    claims.insert(coordinate, c.id);
+                    claim_ids.insert(c.id);
                 }
                 else {
                     match claims.get(&coordinate) {
-                        Some(&count) => {
-                            if count == 1 {
-                                claims.insert(coordinate, 2);
-                                square_inches += 1;
+                        Some(&id) => {
+                            flag_id = id;
+                            if claim_ids.contains(&flag_id) {
+                                claim_ids.remove(&flag_id);
                             }
                         },
                         _ => println!("ERROR"),
@@ -118,6 +121,13 @@ pub fn six() {
             }
         }
 
-    }
+        if flag_id != 0 {
+            if claim_ids.contains(&c.id) {
+                claim_ids.remove(&c.id);
+            }
+        }
 
+        flag_id = 0;
+    }
+    println!("{:?}", claim_ids);
 }
