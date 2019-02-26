@@ -4,10 +4,12 @@ version = "0.1.0"
 authors = ["splashofcrimson <splashofcrimson@gmail.com>"]
 edition = "2018"
 
-[dependencies]
-
 [dev-dependencies]
 criterion = "0.2"
+
+[lib]
+name = "Advent_lib"
+path = "src/lib.rs"
 
 [[bench]]
 name = "advent_benchmark"
