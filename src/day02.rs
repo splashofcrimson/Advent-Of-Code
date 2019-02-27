@@ -8,7 +8,6 @@ fn read_from_file() -> Vec<String> {
         .map(|l| l.unwrap())
         .collect()
 }
-
 pub fn three() {
     let mut box_ids = HashMap::new();
     let mut two_count = 0;
